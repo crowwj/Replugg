@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Colores de la web replug */
+:root{
+
+    /*Primer paquete de colores */
+    --color-primario: oklch(56.824% 0.21466 282.969);
+    --color-secundario: oklch(52.015% 0.21637 306.924);
+    --color-terciario:oklch(52.269% 0.22137 325.159);
+    --color-fondo:oklch(43.2% 0.232 292.759);
+
+    /*segundo paqiete de colores */
+
+
+
+    
+}
+
+/* Etiquetas */
+
+.etiquetas{
+    text-align: center;
+    padding: 10px;
+}
+
+
+
+
+/* */
+
+
+/* LOGIN Y REGISTRO */
+
+
+
+
+/*   */
