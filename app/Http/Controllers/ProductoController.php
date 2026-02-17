@@ -6,9 +6,17 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-    public function index() 
-    {
-        $productos = \App\Models\Producto::paginate(12);
-        return view('main', compact('productos'));
-    }
+    public function index()
+{
+  
+    $productos = \App\Models\Producto::paginate(12);
+
+ 
+    return view('main', compact('productos'));
+}
+
+
+    
+
+  
 }

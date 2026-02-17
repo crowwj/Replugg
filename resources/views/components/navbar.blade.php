@@ -19,45 +19,52 @@
     <body>
 
     <!--Navbar Inicio-->
- 
-
-  <div class="grid grid-cols-8 items-center gap-3 py-4 bg-white">
-    <div class="col-start-2">
-        <h1 class="font-bold text-xl text-violet-800 hover:text-violet-400 transition-colors">RE-PLUG</h1>
+<div class="grid grid-cols-12 items-center gap-4 py-6 bg-white shadow-sm px-10">
+    <div class="col-span-3">
+        <h2 class="text-4xl font-extrabold text-violet-800 tracking-tighter hover:opacity-80 transition-opacity">
+            RE-PLUG<span class="text-violet-400">.</span>
+        </h2>
     </div>
     
-    <div class="col-span-3">
+    <div class="col-span-5 ">
         <div class="relative group">
             <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
                 <svg class="w-5 h-5 text-gray-400 group-focus-within:text-violet-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </div>
-
             <input type="text" 
-                   placeholder="Buscar producto..." 
-                   class="w-full pl-12 pr-4 py-2.5 bg-white border border-gray-200 rounded-full shadow-sm outline-none transition-all duration-300 hover:shadow-md focus:shadow-md focus:border-transparent ring-0 focus:ring-0 text-gray-700"
+                   placeholder="¿Qué tecnología buscas hoy?" 
+                   class="w-full pl-12 pr-4 py-3 bg-gray-70 border border-violet-100 rounded-2xl outline-none transition-all duration-300 focus:bg-white focus:border-violet-200 focus:ring-4 focus:ring-violet-50 text-gray-700"
             >
         </div>
     </div>
 
-    <div class="col-start-7 flex items-center gap-2 hover:text-violet-700 transition-colors ">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7 text-violet-800">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-        </svg>
-       <a href=""> <span>Carrito</span> </a>
-    </div>
+    <div class="col-span-4 flex items-center justify-end gap-8">
+    <a href="" class="flex items-center gap-2 text-gray-600 hover:text-violet-700 font-medium transition-colors group">
+        <div class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7 text-violet-800 group-hover:scale-110 transition-transform">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+            <span class="absolute -top-1 -right-1 bg-violet-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+        </div>
+        <span>Carrito</span>
+    </a>
 
-    <div class="col-start-8">
-        <button class="hover:text-violet-700 transition-colors">Iniciar sesion</button>
-    </div>
+    {{-- Si el usuario está logueado, mostramos el Panel --}}
+    @auth
+        <a href="/panel" class="bg-purple-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-indigo-700 hover:shadow-lg transition-all active:scale-95">
+            Panel de {{ Auth::user()->name }}
+        </a>
+    @endauth
+
+    {{-- Si no ha iniciado sesión, mostramos el botón original --}}
+    @guest
+        <a href="/usuario" class="bg-violet-800 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-violet-900 hover:shadow-lg hover:shadow-violet-200 transition-all active:scale-95">
+            Iniciar sesión
+        </a>
+    @endguest
 </div>
-      
-    <!--Fin-->
-
-
-    
-
-   
-    </body>
+</div>
+</body>
 </html>

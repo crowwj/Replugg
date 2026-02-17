@@ -13,7 +13,19 @@
 @include('components.navbar')
 @include('components.contenidotop')
 @include('components.artefactos')
+@include('components.productos', ['coleccion' => $productos]) 
 @include('components.etiquetas')
+@include('components.footer')
 
+
+
+<!-- CERRAR LA SESION DE USUARIO NO TOCAR
+@auth 
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit">Cerrar sesión</button>
+    </form>
+@endauth
+-->
 </body>
 </html>
