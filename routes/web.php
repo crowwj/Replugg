@@ -56,4 +56,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/CentroDeInformacion', function () {
+    return view('components.cdi');
+});
+
 require __DIR__.'/auth.php';

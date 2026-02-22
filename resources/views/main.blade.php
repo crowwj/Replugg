@@ -19,7 +19,7 @@
 
 
 
-<!-- CERRAR LA SESION DE USUARIO NO TOCAR
+<!-- CERRAR LA SESION DE USUARIO NO TOCAR bitch
 @auth 
     <form action="{{ route('logout') }}" method="POST">
         @csrf
