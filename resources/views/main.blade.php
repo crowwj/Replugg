@@ -18,7 +18,6 @@
 @include('components.footer')
 
 
-
 <!-- CERRAR LA SESION DE USUARIO NO TOCAR
 @auth 
     <form action="{{ route('logout') }}" method="POST">
