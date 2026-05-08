@@ -15,8 +15,11 @@ class ProductoController extends Controller
     return view('main', compact('productos'));
 }
 
-
-    
+    public function show($id)
+{
+    $producto = \App\Models\Producto::findOrFail($id);
+    return view('productos.show', compact('producto'));
+}
 
   
 }

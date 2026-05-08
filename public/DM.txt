@@ -1,0 +1,15 @@
+titulo 
+{{ $producto->nombre }}
+
+Precio
+$ {{ number_format($producto->precio, 0) }}
+
+Descripcion
+{{ $producto->descripcion }}
+
+Imagen
+{{ asset('img/productos/' . $producto->imagen) }}
+
+ID 
+
+{{ $producto->id_producto }}
