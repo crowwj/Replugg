@@ -5,7 +5,7 @@
         @foreach($productos as $producto)
         <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300 cursor-pointer group flex flex-col">
             <div class="aspect-square w-full p-4 flex items-center justify-center border-b border-gray-50">
-                <img src="{{ asset('img/productos/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"  loading="lazy" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform rounded-lg">          
+                <img src="{{ asset('imagenes/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"  loading="lazy" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform rounded-lg">          
         
         </div>
            

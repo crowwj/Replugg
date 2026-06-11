@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
@@ -11,6 +12,10 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void {        }
     public function boot(): void
     {
+        
+
+    URL::forceScheme('https');
+
     Schema::defaultStringLength(191);    
     Gate::define('admin', function (User $user) {
         return $user->role === 'admin'; 

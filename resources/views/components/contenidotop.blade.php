@@ -20,10 +20,9 @@
                 </button>
             </div>
         </div>
-        
         <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center relative">
-            <div class="absolute inset-0 bg-violet-400/20 blur-3xl rounded-full"></div>
-           <span>aqui pondre una Imagen de laptop.png pablo</span>
-        </div>
+    <div class="absolute inset-0 bg-violet-400/20 blur-3xl rounded-full"></div>
+    <img src="{{ asset('img/productos/1.webp') }}" class="relative z-10 w-full max-w-lg drop-shadow-2xl rounded-2xl">
+</div>
     </div>
 </div>

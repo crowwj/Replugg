@@ -27,7 +27,7 @@
                 <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
                     @forelse($items as $item)
                         <div class="flex items-center p-8 border-b border-gray-100 last:border-0 hover:bg-gray-50/50 transition">
-                            <img src="{{ asset('img/' . $item->imagen) }}" alt="{{ $item->nombre }}" class="w-28 h-28 object-cover rounded-2xl shadow-sm">
+                        <img src="{{ asset('img/productos/' . $item->imagen) }}" alt="{{ $item->nombre }}" class="w-28 h-28 object-cover rounded-2xl">
                             
                             <div class="ml-8 flex-1">
                                 <h3 class="text-xl font-bold text-gray-800">{{ $item->nombre }}</h3>
@@ -37,6 +37,8 @@
                                     <span class="ml-2 font-bold text-[#6347f3]">{{ $item->cantidad }}</span>
                                 </div>
                             </div>
+
+
 
                             <div class="text-right">
                                 <p class="text-2xl font-black text-gray-900">${{ number_format($item->precio * $item->cantidad, 2) }}</p>
@@ -69,21 +71,30 @@
                 <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-xl shadow-gray-200/50 sticky top-8">
                     <h2 class="text-2xl font-bold text-gray-900 mb-8">Resumen</h2>
                     
-                    <div class="space-y-4 mb-8">
-                        <div class="flex justify-between text-gray-500 font-medium">
-                            <span>Subtotal</span>
-                            <span>${{ number_format($total, 2) }}</span>
-                        </div>
-                        <div class="flex justify-between text-gray-500 font-medium">
-                            <span>Envío</span>
-                            <span class="text-green-500 font-bold uppercase text-sm italic">Gratis</span>
-                        </div>
-                        <div class="pt-6 border-t border-gray-100 flex justify-between items-end">
-                            <span class="text-lg font-bold text-gray-900">Total a pagar</span>
-                            <span class="text-3xl font-black text-[#6347f3]">${{ number_format($total, 2) }}</span>
-                        </div>
-                    </div>
 
+
+
+                  <div class="space-y-4 mb-8">
+    <div class="flex justify-between text-gray-500 font-medium">
+        <span>Subtotal</span>
+        <span>${{ number_format($subtotal, 2) }}</span>
+    </div>
+
+    <div class="flex justify-between text-gray-500 font-medium">
+        <span>Impuesto ({{ $tasaImpuesto }}%)</span>
+        <span>${{ number_format($montoIVA, 2) }}</span>
+    </div>
+
+    <div class="flex justify-between text-gray-500 font-medium">
+        <span>Envío</span>
+        <span class="text-green-500 font-bold uppercase text-sm italic">Gratis</span>
+    </div>
+
+    <div class="pt-6 border-t border-gray-100 flex justify-between items-end">
+        <span class="text-lg font-bold text-gray-900">Total a pagar</span>
+        <span class="text-3xl font-black text-[#6347f3]">${{ number_format($total, 2) }}</span>
+    </div>
+</div>
                     <div class="mb-8">
                         <p class="text-xs font-black text-gray-400 uppercase tracking-widest mb-4">Selecciona pago</p>
                         <div class="grid grid-cols-1 gap-3">
@@ -102,6 +113,25 @@
                             </label>
                         </div>
                     </div>
+
+                    <div class="mb-8 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+    <div class="flex justify-between items-center mb-4">
+        <p class="text-xs font-black text-gray-400 uppercase tracking-widest">Dirección de envío</p>
+        <a href="{{ route('direcciones.index') }}" class="text-[#6347f3] font-bold text-xs hover:underline">Cambiar</a>
+    </div>
+    
+    @if($direccion)
+        <div class="text-gray-700 font-medium">
+            <p>{{ $direccion->Calle }} #{{ $direccion->NumExt }}</p>
+            <p class="text-sm text-gray-500">CP: {{ $direccion->idCP }}</p>
+        </div>
+    @else
+        <div class="text-red-500 font-bold text-sm">
+            <p>No tienes dirección registrada.</p>
+            <a href="{{ route('direcciones.create') }}" class="text-[#6347f3] underline">Agregar una ahora</a>
+        </div>
+    @endif
+</div>
                     <form action="{{ route('carrito.checkout') }}" method="POST">
                         @csrf
                     <button class="w-full bg-[#6347f3] text-white py-5 rounded-2xl font-black text-lg hover:shadow-[0_15px_30px_rgba(99,71,243,0.4)] transition-all active:scale-[0.98]">

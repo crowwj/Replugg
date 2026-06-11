@@ -22,7 +22,7 @@ class RegistroController extends Controller
         $request->validate([
             'name' => 'required|string|max:120',
             'email' => 'required|email|unique:users', 
-            'contrasena' => 'required|min:8',
+            'contrasena' => 'required|min:10',
             'tel' => 'nullable',
         ], $mensajes);
 

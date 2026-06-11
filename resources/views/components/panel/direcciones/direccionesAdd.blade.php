@@ -29,76 +29,116 @@
             <p class="text-gray-600 text-lg">Registra dónde quieres recibir tus productos de <span class="text-violet-600 font-bold">Re-plug</span>.</p>
         </div>
 
-        <form action="#" method="POST" class="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-violet-200/50 border border-violet-50">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Etiqueta de dirección</label>
-                    <input type="text" placeholder="Ej. Mi Casa u Oficina" 
-                        class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all placeholder-gray-400">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Código Postal</label>
-                    <input type="number" id="cp_input" placeholder="00000" 
-                        class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all placeholder-gray-400">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Estado</label>
-                    <input type="text" readonly placeholder="Estado" 
-                        class="w-full px-5 py-4 rounded-2xl bg-gray-100 border border-transparent text-gray-500 cursor-not-allowed font-medium">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Municipio / Alcaldía</label>
-                    <input type="text" readonly placeholder="Municipio" 
-                        class="w-full px-5 py-4 rounded-2xl bg-gray-100 border border-transparent text-gray-500 cursor-not-allowed font-medium">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Colonia / Asentamiento</label>
-                    <div class="relative">
-                        <select class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all appearance-none">
-                            <option value="">Selecciona tu colonia</option>
-                        </select>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-violet-500">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Calle</label>
-                    <input type="text" placeholder="Nombre de la calle o avenida" 
-                        class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all placeholder-gray-400">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Núm. Exterior</label>
-                    <input type="text" placeholder="Ext." 
-                        class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all placeholder-gray-400">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Núm. Interior (Opcional)</label>
-                    <input type="text" placeholder="Apto / Depto" 
-                        class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all placeholder-gray-400">
-                </div>
-
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-4 mt-12">
-                <button type="submit" 
-                    class="flex-[2] bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-extrabold py-4 rounded-2xl transition-all shadow-xl shadow-violet-200 active:scale-[0.98]">
-                    Guardar Dirección
-                </button>
-                <button type="button" 
-                    class="flex-1 bg-white border-2 border-gray-100 hover:bg-gray-50 text-gray-500 font-bold py-4 rounded-2xl transition-all">
-                    Cancelar
-                </button>
-            </div>
-        </form>
+        @if(session('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+        {{ session('success') }}
     </div>
+@endif
+<form action="{{ route('direcciones.store') }}" method="POST" novalidate class="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-violet-200/50 border border-violet-50">
+    @csrf
+
+    @if ($errors->any())
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div class="md:col-span-2">
+            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Etiqueta de dirección</label>
+            <input type="text" name="etiqueta" value="{{ old('etiqueta') }}" placeholder="Ej. Mi Casa u Oficina" class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all">
+        </div>
+
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Código Postal</label>
+            <input type="number" name="cp" value="{{ old('cp') }}" placeholder="00000" required class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all">
+        </div>
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Estado</label>
+            <input type="text" name="estado" value="Sinaloa" readonly class="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-violet-100 text-gray-700 font-medium">
+        </div>
+
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Municipio / Alcaldía</label>
+            <select name="municipio" class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all">
+                <option value="">Selecciona tu municipio</option>
+                @foreach($municipios as $m)
+                    <option value="{{ $m }}" {{ old('municipio') == $m ? 'selected' : '' }}>{{ $m }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Colonia / Asentamiento</label>
+            <input type="text" name="colonia" value="{{ old('colonia') }}" placeholder="Ej. Centro" required class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all">
+        </div>
+
+        <div class="md:col-span-2">
+            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Calle</label>
+            <input type="text" name="calle" value="{{ old('calle') }}" placeholder="Nombre de la calle" required class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all">
+        </div>
+
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Núm. Exterior</label>
+            <input type="text" name="numext" value="{{ old('numext') }}" placeholder="Ext." required class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all">
+        </div>
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Núm. Interior (Opcional)</label>
+            <input type="text" name="num_int" value="{{ old('num_int') }}" placeholder="Apto / Depto" class="w-full px-5 py-4 rounded-2xl bg-violet-50/50 border border-violet-100 focus:ring-4 focus:ring-violet-500/10 focus:border-violet-500 outline-none transition-all">
+        </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-4 mt-12">
+        <button type="submit" class="flex-[2] bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-extrabold py-4 rounded-2xl transition-all shadow-xl shadow-violet-200 active:scale-[0.98]">
+            Guardar Dirección
+        </button>
+        <a href="/" class="flex-1 bg-white border-2 border-gray-100 hover:bg-gray-50 text-gray-500 font-bold py-4 rounded-2xl transition-all block text-center leading-[3rem]">
+            Cancelar
+        </a>
+    </div>
+</form>
+    <script>
+        document.getElementById('cp_input').addEventListener('input', function(e) {
+    let cp = e.target.value;
+
+    if (cp.length === 5) {
+        
+        fetch(`/api/consultar-cp/${cp}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    //
+                    document.getElementById('municipio_input').value = data.municipio;
+                    
+                   
+                    let selectColonia = document.getElementById('colonia_select');
+                    selectColonia.innerHTML = ''; 
+                    
+                    data.colonias.forEach(colonia => {
+                        let option = document.createElement('option');
+                        option.value = colonia;
+                        option.textContent = colonia;
+                        selectColonia.appendChild(option);
+                    });
+                } else {
+                    alert('Código postal no encontrado en Sinaloa');
+                }
+            });
+    }
+});
+
+document.getElementById('cp').addEventListener('blur', function() {
+    let cp = this.value;
+    fetch(`/api/datos-cp/${cp}`)
+        .then(response => response.json())
+        .then(data => {  
+            document.getElementById('municipio').value = data[0].municipio;
+        });
+});
+    </script>
 </body>
 </html>

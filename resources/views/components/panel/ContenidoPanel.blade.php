@@ -1,3 +1,5 @@
+
+
 <main class="col-span-1 lg:col-span-4 p-8 lg:p-12">
             <header class="flex justify-between items-center mb-10">
                 <div class="flex flex-col">
@@ -33,15 +35,15 @@
                             <form action="{{ route('profile.update') }}" method="POST">
                             @csrf
                             <label class="text-sm font-semibold text-gray-500 ml-1">Nombre de usuario</label>
-                            <input type="text" name="name"  id="CambiarNombre" value="{{ Auth::user()->name }}" readonly placeholder="Tu nombre" class="w-full px-4 py-2 rounded-xl border border-violet-100 bg-violet-50/30 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all cursor-default">
+                            <input type="text" name="name"  id="CambiarNombre" maxlength="20"   value="{{ Auth::user()->name }}" readonly placeholder="Tu nombre" class="w-full px-4 py-2 rounded-xl border border-violet-100 bg-violet-50/30 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all cursor-default">
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="text-sm font-semibold text-gray-500 ml-1">Correo Electrónico</label>
-                            <input type="email" name="email" id="CambiarCorreo" value="{{ Auth::user()->email }}" readonly placeholder="tu@correo.com" class="w-full px-4 py-2 rounded-xl border border-violet-100 bg-violet-50/30 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all cursor-default">
+                            <input type="email" name="email" id="CambiarCorreo" maxlength="20"  value="{{ Auth::user()->email }}" readonly placeholder="tu@correo.com" class="w-full px-4 py-2 rounded-xl border border-violet-100 bg-violet-50/30 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all cursor-default">
                         </div>
                         <div class="flex flex-col gap-2 md:col-span-2">
                             <label class="text-sm font-semibold text-gray-500 ml-1">Número telefónico</label>
-                            <input  type="text" name="tel" id="CambiarTel" value="{{ Auth::user()->tel }}" readonly  placeholder="" class="w-full px-4 py-2 rounded-xl border border-violet-100 bg-violet-50/30 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all cursor-default">
+                            <input  type="text" name="tel" id="CambiarTel" maxlength="15" value="{{ Auth::user()->tel }}" readonly  placeholder="" class="w-full px-4 py-2 rounded-xl border border-violet-100 bg-violet-50/30 focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all cursor-default">
                         </div>
                     </div>
 

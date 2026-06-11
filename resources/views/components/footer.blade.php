@@ -13,24 +13,24 @@
             </div>
 
             <div>
-                <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6">Explorar</h3>
-                <ul class="space-y-4">
-                    <li><a href="#" class="text-gray-500 hover:text-violet-700 hover:translate-x-1 inline-block transition-all">Computadoras</a></li>
-                    <li><a href="#" class="text-gray-500 hover:text-violet-700 hover:translate-x-1 inline-block transition-all">Celulares</a></li>
-                    <li><a href="#" class="text-gray-500 hover:text-violet-700 hover:translate-x-1 inline-block transition-all">Componentes</a></li>
-                    <li><a href="#" class="text-gray-500 hover:text-violet-700 hover:translate-x-1 inline-block transition-all">Consolas</a></li>
-                </ul>
-            </div>
+    <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6">Explorar</h3>
+    <ul class="space-y-4">
+        <li><span class="text-gray-500 hover:text-violet-700">Computadoras</span></li>
+        <li><span class="text-gray-500 hover:text-violet-700 ">Celulares</span></li>
+        <li><span class="text-gray-500 hover:text-violet-700 ">Componentes</span></li>
+        <li><span class="text-gray-500 hover:text-violet-700 ">Consolas</span></li>
+    </ul>
+</div>
 
-            <div>
-                <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6">Soporte</h3>
-                <ul class="space-y-4">
-                    <li><a href="#" class="text-gray-500 hover:text-violet-700 transition-all">Mi Cuenta</a></li>
-                    <li><a href="#" class="text-gray-500 hover:text-violet-700 transition-all">Estado del Pedido</a></li>
-                    <li><a href="#" class="text-gray-500 hover:text-violet-700 transition-all">Garantía Extendida</a></li>
-                    <li><a href="#" class="text-gray-500 hover:text-violet-700 transition-all">Preguntas Frecuentes</a></li>
-                </ul>
-            </div>
+<div>
+    <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6">Soporte</h3>
+    <ul class="space-y-4">
+        <li><span class="text-gray-500 hover:text-violet-700 ">Mi Cuenta</span></li>
+        <li><span class="text-gray-500 hover:text-violet-700 ">Estado del Pedido</span></li>
+        <li><span class="text-gray-500 hover:text-violet-700 ">Garantía Extendida</span></li>
+        <li><span class="text-gray-500 hover:text-violet-700 ">Preguntas Frecuentes</span></li>
+    </ul>
+</div>
 
             <div>
                 <h3 class="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6">Contacto</h3>
@@ -46,8 +46,8 @@
         <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <p>&copy; 2026 Re-Plug. Todos los derechos reservados.</p>
             <div class="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" class="hover:text-violet-600 transition-colors">Privacidad</a>
-                <a href="#" class="hover:text-violet-600 transition-colors">Términos</a>
+                <a href="#" class="hover:text-violet-600 transition-colors"></a>
+                <a href="#" class="hover:text-violet-600 transition-colors"></a>
             </div>
         </div>
     </div>

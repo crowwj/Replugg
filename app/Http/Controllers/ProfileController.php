@@ -33,7 +33,7 @@ class ProfileController extends Controller
 {
     $user = Auth::user();
     $request->validate([
-        'name'  => 'required|string|max:255',
+        'name'  => 'required|string|max:20',
         'email' => 'required|email|unique:users,email,' . $user->id,
         'tel' => 'nullable|string|max:20',
     ]);
